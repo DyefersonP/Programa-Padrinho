@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Meu Painel | Programa Padrinho</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css" />
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+<div id="tsparticles"></div>
+
+<div class="page">
+  <div class="topbar">
+    <a href="/" class="brand">
+      <span class="flame">🔥</span>
+      <span>PROGRAMA PADRINHO <small>AMBIPAR · BOMBEIROS</small></span>
+    </a>
+    <div class="nav-actions">
+      <div class="user-chip">
+        <div class="avatar" id="avatarIniciais">?</div>
+        <div>
+          <div id="nomeUsuario" style="color: var(--text-0); font-weight:600;">—</div>
+          <div id="matriculaUsuario" style="font-size:0.72rem;">—</div>
+        </div>
+      </div>
+      <button class="btn btn-ghost btn-sm" id="btnSair">Sair</button>
+    </div>
+  </div>
+
+  <div class="dash-hero container">
+    <h2 style="margin-top:14px;">Sua Ficha de Desenvolvimento</h2>
+    <p style="color: var(--text-1); max-width: 640px;">Marque cada atividade concluída, anexe as fotos de comprovação e acompanhe o feedback do seu líder.</p>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-card">
+      <div class="progress-top">
+        <div>
+          <div style="font-size:0.8rem; color: var(--text-2); text-transform:uppercase; letter-spacing:1px;">Progresso geral</div>
+          <div id="progressoResumo" style="font-size:0.85rem; color: var(--text-1); margin-top:2px;">0 de 0 atividades concluídas</div>
+        </div>
+        <div class="pct" id="progressoPct">0%</div>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressoFill"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="checklist" id="checklist">
+    <div class="empty-state">Carregando sua ficha…</div>
+  </div>
+</div>
+
+<div class="lightbox-overlay" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <img id="lightboxImg" alt="Foto de comprovação" />
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/dashboard.js"></script>
+</body>
+</html>

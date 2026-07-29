@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Entrar | Programa Padrinho</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css" />
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+</head>
+<body>
+<div id="tsparticles"></div>
+
+<div class="page">
+  <nav class="navbar">
+    <a href="/" class="brand">
+      <span class="flame">🔥</span>
+      <span>PROGRAMA PADRINHO <small>AMBIPAR · BOMBEIROS</small></span>
+    </a>
+  </nav>
+
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <h2>Bem-vindo(a) 👋</h2>
+      <div class="sub">Acesse sua jornada de desenvolvimento</div>
+
+      <div class="tabs">
+        <div class="tab" id="tabLogin">Entrar</div>
+        <div class="tab" id="tabCadastro">Criar conta</div>
+      </div>
+
+      <div class="alert alert-error" id="alertErro"></div>
+      <div class="alert alert-success" id="alertSucesso"></div>
+
+      <!-- LOGIN -->
+      <form id="formLogin" class="form-section">
+        <div class="field">
+          <label>Matrícula</label>
+          <input type="text" id="loginMatricula" placeholder="Sua matrícula" autocomplete="username" required />
+        </div>
+        <div class="field">
+          <label>Senha</label>
+          <input type="password" id="loginSenha" placeholder="Sua senha" autocomplete="current-password" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="btnLogin">
+          <span class="label">Entrar</span>
+        </button>
+      </form>
+
+      <!-- CADASTRO -->
+      <form id="formCadastro" class="form-section">
+        <div class="field">
+          <label>Nome completo</label>
+          <input type="text" id="cadNome" placeholder="Seu nome completo" required />
+        </div>
+        <div class="field">
+          <label>Matrícula</label>
+          <input type="text" id="cadMatricula" placeholder="Sua matrícula" required />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Líder responsável <span style="color:var(--text-2); font-weight:400;">(opcional)</span></label>
+            <input type="text" id="cadLider" placeholder="Nome do líder" />
+          </div>
+          <div class="field">
+            <label>Tutor <span style="color:var(--text-2); font-weight:400;">(opcional)</span></label>
+            <input type="text" id="cadTutor" placeholder="Nome do tutor" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Crie uma senha</label>
+            <input type="password" id="cadSenha" placeholder="Mín. 6 caracteres" required />
+          </div>
+          <div class="field">
+            <label>Confirmar senha</label>
+            <input type="password" id="cadConfirmarSenha" placeholder="Repita a senha" required />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="btnCadastro">
+          <span class="label">Criar minha conta</span>
+        </button>
+      </form>
+
+      <div class="admin-link-row">
+        É administrador? <a href="/admin-login.html">Acessar painel administrativo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/auth.js"></script>
+</body>
+</html>

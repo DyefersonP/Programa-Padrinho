@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Painel Administrativo | Programa Padrinho</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css" />
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+</head>
+<body>
+<div id="tsparticles"></div>
+
+<div class="page">
+  <div class="topbar">
+    <a href="/" class="brand">
+      <span class="flame">🔥</span>
+      <span>PROGRAMA PADRINHO <small>PAINEL ADMINISTRATIVO</small></span>
+    </a>
+    <div class="nav-actions">
+      <a href="/api/admin/export.csv" class="btn btn-outline btn-sm">⬇ Exportar CSV</a>
+      <button class="btn btn-ghost btn-sm" id="btnSairAdmin">Sair</button>
+    </div>
+  </div>
+
+  <div class="admin-stats" id="statsWrap">
+    <div class="stat-card"><div class="num" id="statTotalBombeiros">–</div><div class="label">Bombeiros cadastrados</div></div>
+    <div class="stat-card"><div class="num" id="statTotalAtividades">–</div><div class="label">Atividades no checklist</div></div>
+    <div class="stat-card"><div class="num" id="statConcluidos">–</div><div class="label">Ficha 100% concluída</div></div>
+    <div class="stat-card"><div class="num" id="statMedia">–</div><div class="label">Progresso médio</div></div>
+  </div>
+
+  <div class="admin-toolbar">
+    <input type="text" class="search-input" id="buscaBombeiro" placeholder="🔍 Buscar por nome ou matrícula…" />
+    <div class="admin-tabs">
+      <button class="btn btn-outline btn-sm" id="tabBombeiros">👨‍🚒 Bombeiros</button>
+      <button class="btn btn-ghost btn-sm" id="tabAtividades">🗂 Gerenciar atividades</button>
+    </div>
+  </div>
+
+  <div class="bombeiro-table-wrap" id="viewBombeiros">
+    <div class="bombeiro-grid" id="bombeiroGrid">
+      <div class="empty-state">Carregando bombeiros…</div>
+    </div>
+  </div>
+
+  <div class="atividades-manager" id="viewAtividades" style="display:none;">
+    <div class="progress-card" style="margin-bottom:16px;">
+      <h3 style="margin-bottom:4px;">Adicionar nova atividade</h3>
+      <p style="color:var(--text-2); font-size:0.82rem; margin-bottom:14px;">Essa atividade passará a aparecer no checklist de todos os bombeiros.</p>
+      <div style="display:flex; gap:10px;">
+        <input type="text" id="novaAtividadeNome" placeholder="Nome da nova atividade" class="search-input" style="flex:1;" />
+        <button class="btn btn-primary" id="btnAddAtividade">Adicionar</button>
+      </div>
+    </div>
+    <div id="listaAtividades"></div>
+  </div>
+</div>
+
+<!-- Modal detalhe do bombeiro -->
+<div class="modal-overlay" id="modalBombeiro">
+  <div class="modal-box">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+      <div>
+        <h2 id="modalNome" style="margin-bottom:2px;">—</h2>
+        <div style="color:var(--text-2); font-size:0.82rem;" id="modalInfo">—</div>
+      </div>
+      <button class="btn btn-ghost btn-sm" id="modalFechar">Fechar ✕</button>
+    </div>
+    <div class="progress-bar-track" style="margin:18px 0 6px;">
+      <div class="progress-bar-fill" id="modalProgressoFill"></div>
+    </div>
+    <div style="font-size:0.8rem; color:var(--text-2); margin-bottom:18px;" id="modalProgressoTexto">—</div>
+    <div id="modalChecklist"></div>
+  </div>
+</div>
+
+<div class="lightbox-overlay" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <img id="lightboxImg" alt="Foto de comprovação" />
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>
