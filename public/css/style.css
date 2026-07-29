@@ -2,9 +2,12 @@
   --bg-0: #04050c;
   --bg-1: #090b18;
   --bg-2: #0e1224;
-  --panel: rgba(18, 21, 41, 0.72);
+  --panel: rgba(255, 255, 255, 0.06);
   --panel-solid: #12152a;
   --border: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-highlight: rgba(255, 255, 255, 0.35);
+  --glass-blur: 20px;
 
   --neon-cyan: #00f0ff;
   --neon-magenta: #ff2bd6;
@@ -17,12 +20,48 @@
   --text-1: #b9c0e0;
   --text-2: #7a80a8;
 
-  --radius: 16px;
-  --radius-sm: 10px;
+  --radius: 18px;
+  --radius-sm: 12px;
   --shadow-glow-cyan: 0 0 12px rgba(0, 240, 255, 0.55), 0 0 32px rgba(0, 240, 255, 0.18);
   --shadow-glow-magenta: 0 0 12px rgba(255, 43, 214, 0.55), 0 0 32px rgba(255, 43, 214, 0.18);
   --shadow-glow-lime: 0 0 12px rgba(57, 255, 157, 0.55), 0 0 32px rgba(57, 255, 157, 0.18);
   --shadow-glow-orange: 0 0 12px rgba(255, 106, 43, 0.55), 0 0 32px rgba(255, 106, 43, 0.18);
+}
+
+/* ---------- Glass container (base) ---------- */
+.feature-card,
+.auth-card,
+.progress-card,
+.activity-card,
+.stat-card,
+.bombeiro-card,
+.modal-box,
+.atividade-row,
+.toast {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.feature-card::before,
+.auth-card::before,
+.progress-card::before,
+.activity-card::before,
+.stat-card::before,
+.bombeiro-card::before,
+.modal-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--glass-highlight), transparent 40%, transparent 70%, rgba(255,255,255,0.08));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 * { box-sizing: border-box; }
@@ -34,7 +73,7 @@ html, body {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-family: 'Manrope', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   color: var(--text-0);
   background:
     radial-gradient(1200px 600px at 15% -10%, rgba(0, 240, 255, 0.10), transparent 60%),
@@ -59,7 +98,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Orbitron', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Manrope', sans-serif;
   letter-spacing: 0.3px;
   margin: 0 0 0.4em;
 }
@@ -90,7 +129,7 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 1.05rem;
   text-decoration: none;
@@ -111,7 +150,7 @@ a { color: inherit; }
 
 .brand small {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-weight: 400;
   color: var(--text-2);
   font-size: 0.68rem;
@@ -129,7 +168,7 @@ a { color: inherit; }
   appearance: none;
   border: none;
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-weight: 600;
   font-size: 0.92rem;
   padding: 12px 22px;
@@ -244,11 +283,8 @@ a { color: inherit; }
 }
 
 .feature-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 24px;
-  backdrop-filter: blur(10px);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
@@ -286,12 +322,9 @@ a { color: inherit; }
 .auth-card {
   width: 100%;
   max-width: 460px;
-  background: var(--panel);
-  border: 1px solid var(--border);
   border-radius: 20px;
   padding: 36px 32px;
-  backdrop-filter: blur(16px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0, 240, 255, 0.06);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0, 240, 255, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .auth-card h2 { text-align: center; font-size: 1.5rem; }
@@ -436,11 +469,8 @@ a { color: inherit; }
 }
 
 .progress-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 22px 26px;
-  backdrop-filter: blur(10px);
 }
 
 .progress-top {
@@ -453,7 +483,7 @@ a { color: inherit; }
 }
 
 .progress-top .pct {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.6rem;
   background: linear-gradient(90deg, var(--neon-cyan), var(--neon-lime));
   -webkit-background-clip: text;
@@ -493,11 +523,8 @@ a { color: inherit; }
 }
 
 .activity-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px 20px;
-  backdrop-filter: blur(10px);
   transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -516,7 +543,7 @@ a { color: inherit; }
   justify-content: space-between;
 }
 
-.activity-head h4 { font-size: 0.98rem; margin: 0; line-height: 1.35; font-family: 'Inter', sans-serif; font-weight: 700; }
+.activity-head h4 { font-size: 0.98rem; margin: 0; line-height: 1.35; font-family: 'Manrope', sans-serif; font-weight: 700; }
 
 .checkbox {
   width: 26px;
@@ -625,8 +652,7 @@ a { color: inherit; }
 }
 .modal-overlay.show { display: flex; }
 .modal-box {
-  background: var(--panel-solid);
-  border: 1px solid var(--border);
+  background: rgba(18, 21, 41, 0.55);
   border-radius: var(--radius);
   max-width: 720px;
   width: 100%;
@@ -662,8 +688,7 @@ a { color: inherit; }
 .toast {
   padding: 13px 18px;
   border-radius: 12px;
-  background: var(--panel-solid);
-  border: 1px solid var(--border);
+  background: rgba(18, 21, 41, 0.55);
   font-size: 0.85rem;
   min-width: 240px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
@@ -700,13 +725,11 @@ a { color: inherit; }
   gap: 16px;
 }
 .stat-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 20px 22px;
 }
 .stat-card .num {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 2rem;
   background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
   -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -748,8 +771,6 @@ a { color: inherit; }
   gap: 16px;
 }
 .bombeiro-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 20px;
   cursor: pointer;
@@ -773,8 +794,6 @@ a { color: inherit; }
   align-items: center;
   gap: 10px;
   padding: 10px 14px;
-  background: var(--panel);
-  border: 1px solid var(--border);
   border-radius: 12px;
   margin-bottom: 8px;
 }
